@@ -1,0 +1,23 @@
+vector<int> levelOrder(TreeNode* root) {
+        vector<int> ans;    //VECTOER IS REQ FOR STORING THE ANS
+        
+        if(root == NULL)      
+            return ans; 
+            
+        queue<TreeNode*> q;   //QUEUE IS REQUIRED
+        q.push(root);          //ROOT IS PUSHED IN THE QUEUE
+        
+        while(!q.empty()) {               
+           
+            TreeNode *temp = q.front();     TreeNode is the class/structure / now making a temp pointer for storing the value of front
+            q.pop();    // pop out
+            
+            if(temp->left != NULL) 
+                q.push(temp->left); 
+            if(temp->right != NULL) 
+                q.push(temp->right); 
+                
+            ans.push_back(temp->val); 
+        }
+        return ans; 
+    }
