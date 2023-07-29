@@ -1,0 +1,53 @@
+innerorder traversal : left / root / right
+
+#include<iostream>
+#include<queue>
+using namespace std;
+
+class Node           // structure of a binary tree also you can use struct
+{
+public:
+    int data;
+     Node *left ;
+    Node *right ;
+
+    Node(int val )                    // constructure called
+    {
+        this->data = val ;
+        this->left = NULL;
+        this->right =NULL;         //initial values will be zeros.
+
+    }
+
+};
+
+
+
+void Inorder(Node * node , vector<int>& ress  )          //inorder logic  #RECURSIVE SOL
+{
+if(node == NULL)   
+{
+    return ;
+}
+Inorder(node->left , ress);
+ress.push_back (node->data);
+Inorder(node->right , ress);
+}
+
+int main()
+{
+    
+    vector <int > ress;
+
+Node *root = new Node(1); // inserted the root node 
+root->left  = new Node(2);            //inserting the data
+root->right  = new Node(3);
+root->left->right = new Node(5);
+cout<<"inorder traversal" <<endl;
+
+Inorder(root , ress ); //calling the function 
+for( auto i : ress)   //printing the data
+{
+    cout<< i << "" ;
+}
+}
